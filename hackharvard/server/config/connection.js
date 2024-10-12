@@ -3,15 +3,16 @@ import { Pinecone } from '@pinecone-database/pinecone';
 // Create a serverless index
 // "dimension" needs to match the dimensions of the vectors you upsert
 const pc = new Pinecone({
-    apiKey: 'YOUR_API_KEY' 
+    apiKey: "d027b98d-113a-4b31-bd61-df3a4065eb2c"
 });
 
-await pc.createIndex({ name: 'products', dimension: 1536,
+const subredditData = "redditIndex"
+await pc.createIndex({ name: subredditData, dimension: 1536,
     spec: { serverless: { cloud: 'aws', region: 'us-east-1', } } 
 }) 
 
 // Target the index
-const index = pc.index('products');
+const index = pc.index('redditIndex');
 
 // Mock vector and metadata objects (you would bring your own)
 const records = [{ 
